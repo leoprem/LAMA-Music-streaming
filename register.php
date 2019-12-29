@@ -1,7 +1,7 @@
 <?php
 include("includes/config.php");
 
-include("includes/classes/Account.php");
+include("includes/classes/old_php/Account.php");
 include("includes/classes/Constants.php");
 
 $account = new Account($con);
@@ -65,7 +65,7 @@ function getInputValue($name)
                     <p>
                        <?php echo $account->getError(Constants::$loginFailed) ?>
                        <label for="loginUsername">Username:</label>
-                        <input type="text" id="loginUsername" name="loginUsername" placeholder="Enter Username" required>
+                        <input type="text" id="loginUsername" name="loginUsername" placeholder="Enter Username" value = "<?php getInputValue('loginUsername') ?>" required>
                     </p>
                     <p>
                         <label for="loginPassword">Password:</label>
