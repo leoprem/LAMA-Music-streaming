@@ -8,6 +8,11 @@ body,html
     font-family: Helvetica,Arial,sans-serif; 
     color: #fff;
 }
+#topContainer
+{
+    min-height: 100%;
+    width: 100%;
+}
 #nowPlayingContainer
 {
     width: 100%;
@@ -141,4 +146,59 @@ body,html
 #nowPlayingRight .volumeBar .progressBar
 {
     width: 125px;
+}
+#navBarContainer
+{
+    background-color: #13203B;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#navBarContainer #navBar
+{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-direction: column;
+}
+.logo
+{
+    margin-bottom: 15px;
+}
+.logo img
+{
+    width: 80px;
+}
+.group
+{
+    border-top: 2px solid #a0a0a0;
+    padding: 10px 0px;
+}
+.navItem
+{
+    position: relative;
+    padding: 7px;
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+    letter-spacing: 1px;
+}
+.navItemLink
+{
+    text-decoration: none;
+    color:#a0a0a0;
+}
+.navItemLink:hover
+{
+    color: #fff;    
+}
+.navItemLink .icon
+{
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    width: 30px;
+
 }
