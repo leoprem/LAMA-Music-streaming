@@ -2,3 +2,15 @@ Edit module broken
 Edit module fixed!
 
 Fix "add_songs.php"
+Fixed
+
+add song_form.php
+added
+
+add edit_song.php
+added
+
+add delete_song.php
+added
+
+

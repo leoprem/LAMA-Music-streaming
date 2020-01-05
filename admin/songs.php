@@ -137,7 +137,7 @@ if ($order_dir == 'Desc') {
             <!-- Delete Confirmation Modal -->
             <div class="modal fade" id="confirm-delete-<?php echo $row['id']; ?>" role="dialog">
                 <div class="modal-dialog">
-                    <form action="delete_album.php" method="POST">
+                    <form action="delete_song.php" method="POST">
                         <!-- Modal content -->
                         <div class="modal-content">
                             <div class="modal-header">
@@ -163,7 +163,7 @@ if ($order_dir == 'Desc') {
     <!-- //Table -->
     <!-- Pagination -->
     <div class="text-center">
-    	<?php echo paginationLinks($page, $total_pages, 'albums.php'); ?>
+    	<?php echo paginationLinks($page, $total_pages, 'songs.php'); ?>
     </div>
     <!-- //Pagination -->
 </div>

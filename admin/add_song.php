@@ -38,18 +38,18 @@ $edit = false;
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Add Customer</h2>
+            <h2 class="page-header">Add Song</h2>
         </div>
     </div>
     <!-- Flash messages -->
     <?php include BASE_PATH.'/includes/flash_messages.php'; ?>
-    <form class="form" action="" method="post" id="album_form" enctype="multipart/form-data">
-        <?php include BASE_PATH.'/forms/album_form.php'; ?>
+    <form class="form" action="" method="post" id="song_form" enctype="multipart/form-data">
+        <?php include BASE_PATH.'/forms/song_form.php'; ?>
     </form>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-   $('#album_form').validate({
+   $('#song_form').validate({
        rules: {
             title: {
                 required: true,
