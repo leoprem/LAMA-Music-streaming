@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		$db_password = $row['password'];
 		$user_id = $row['id'];
 
-		if (password_verify($password, $db_password))
+		if (md5($password) == $db_password)
         {
 			$_SESSION['user_logged_in'] = TRUE;
 			$_SESSION['admin_type'] = $row['admin_type'];
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
 				$series_id = randomString(16);
 				$remember_token = getSecureRandomToken(20);
-				$encryted_remember_token = password_hash($remember_token,PASSWORD_DEFAULT);
+				$encryted_remember_token = md5($remember_token);
 
 				$expiry_time = date('Y-m-d H:i:s', strtotime(' + 30 days'));
 				$expires = strtotime($expiry_time);

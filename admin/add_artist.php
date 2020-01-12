@@ -14,13 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     //$data_to_db['created_at'] = date('Y-m-d H:i:s');
 
     $db = getDbInstance();
-    $last_id = $db->insert('album', $data_to_db);
+    $last_id = $db->insert('artist', $data_to_db);
 
     if ($last_id)
     {
-        $_SESSION['success'] = 'Album added successfully!';
+        $_SESSION['success'] = 'Artist added successfully!';
         // Redirect to the listing page
-        header('Location: albums.php');
+        header('Location: artists.php');
         // Important! Don't execute the rest put the exit/die.
     	exit();
     }
@@ -38,20 +38,20 @@ $edit = false;
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="page-header">Add Album</h2>
+            <h2 class="page-header">Add Artist</h2>
         </div>
     </div>
     <!-- Flash messages -->
     <?php include BASE_PATH.'/includes/flash_messages.php'; ?>
-    <form class="form" action="" method="post" id="album_form" enctype="multipart/form-data">
-        <?php include BASE_PATH.'/forms/album_form.php'; ?>
+    <form class="form" action="" method="post" id="artist_form" enctype="multipart/form-data">
+        <?php include BASE_PATH.'/forms/artist_form.php'; ?>
     </form>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-   $('#album_form').validate({
+   $('#artist_form').validate({
        rules: {
-            title: {
+            name: {
                 required: true,
                 minlength: 3
             },

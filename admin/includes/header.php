@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Administrator</title>
+        <title>LAMA Music</title>
 
         <!-- Bootstrap Core CSS -->
         <link  rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="">Administrator</a>
+                        <a class="navbar-brand" href="">LAMA Music</a>
                     </div>
                     <!-- /.navbar-header -->
 
@@ -129,7 +129,7 @@
                                 </li>
                                 
                                 
-                                <li><a href="admin_users.php"><i class="fa fa-users fa-fw"></i> Users</a></li>
+                                <li><a href="admin_users.php"><i class="fa fa-users fa-fw"></i> Admins</a></li>
                             </ul>
                         </div>
                         <!-- /.sidebar-collapse -->

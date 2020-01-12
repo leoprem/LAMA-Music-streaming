@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	$admin_user_id = filter_input(INPUT_GET, 'admin_user_id', FILTER_VALIDATE_INT);
 	// Encrypting the password
-	$data_to_db['password'] = password_hash($data_to_db['password'], PASSWORD_DEFAULT);
+	$data_to_db['password'] = md5($data_to_db['password']);
 	// Reset db instance
 	$db = getDbInstance();
 	$db->where('id', $admin_user_id);

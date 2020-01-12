@@ -23,7 +23,7 @@ if (isset($_COOKIE['series_id']) && isset($_COOKIE['remember_token']))
 	if ($db->count >= 1)
 	{
 		// User found. verify remember token
-		if (password_verify($remember_token, $row['remember_token']))
+		if (md5($remember_token) == $row['remember_token'])
         {
 			// Verify if expiry time is modified. 
 			$expires = strtotime($row['expires']);
