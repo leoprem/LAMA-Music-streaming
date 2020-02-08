@@ -6,68 +6,67 @@
 
     <div class="form-group">
         <label for="artist">Artist *</label>
-        <input type="number" name="artist" value="<?php echo htmlspecialchars($edit ? $album['artist'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Last Name" class="form-control" required="required" id="artist">
+<!--        <input type="number" name="artist" value="<?php echo htmlspecialchars($edit ? $album['artist'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Last Name" class="form-control" required="required" id="artist">-->
+       <select name="artist" id="artist" class="form-control">
+        <?php 
+        
+            $result = mysqli_query($connect,"SELECT id,name FROM Artist");  
+           
+           if(mysqli_num_rows($result) > 0):
+               while($row = mysqli_fetch_assoc($result)):
+        ?>
+            <option 
+            <?php if($edit == 1 && $row['id'] == $album['artist']):?>
+                selected=selected 
+            <?php endif //value taken to database?> 
+                value="<?php echo $row['id'];?>"
+            >
+            
+            <?php echo $row['name']; ?>        
+            
+            </option>     
+        <?php
+             endwhile;
+            endif;
+        ?>
+        
+    </select>
+
     </div>
     <div class="form-group">
         <label for="genre">Genre *</label>
-        <input type="number" name="genre" value="<?php echo htmlspecialchars($edit ? $album['genre'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="genre" class="form-control" required="required" id="genre">
-    </div>
-
-
-<!--
-    <div class="form-group">
-        <label>Genre *</label>
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="male" <?php echo ($edit &&$customer['gender'] =='male') ? "checked": "" ; ?> required="required" id="male"/> Male
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="gender" value="female" <?php echo ($edit && $customer['gender'] =='female')? "checked": "" ; ?> required="required" id="female"/> Female
-        </label>
-    </div>
--->
-
-    <div class="form-group">
-        <label for="artworkPath">Upload Artwork</label>
-          <textarea name="artworkPath" placeholder="Artwork" class="form-control" id="artworkPath"><?php echo htmlspecialchars(($edit) ? $album['artworkPath'] : '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+<!--        <input type="number" name="genre" value="<?php echo htmlspecialchars($edit ? $album['genre'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="genre" class="form-control" required="required" id="genre">-->
+    <select name="genre" id="genre" class="form-control">
+        <?php 
+        
+            $result = mysqli_query($connect,"SELECT id,name FROM genres");  
+           
+           if(mysqli_num_rows($result) > 0):
+               while($row = mysqli_fetch_assoc($result)):
+        ?>
+            <option 
+            <?php if($edit == 1 && $row['id'] == $album['genre']):?>
+                selected=selected 
+            <?php endif //value taken to database?> 
+                value="<?php echo $row['id'];?>"
+            >
+            
+            <?php echo $row['name']; ?>        
+            
+            </option>     
+        <?php
+             endwhile;
+            endif;
+        ?>
+        
+    </select>
     </div>
     
-
-<!--
     <div class="form-group">
-        <label>State</label>
-        <?php $opt_arr = array("Maharashtra", "Kerala", "Madhya pradesh"); ?>
-        <select name="state" class="form-control selectpicker" required>
-            <option value=" ">Please select your state</option>
-            <?php
-            foreach ($opt_arr as $opt) {
-                if ($edit && $opt == $customer['state']) {
-                    $sel = 'selected';
-                } else {
-                    $sel = '';
-                }
-                echo '<option value="'.$opt.'"' . $sel . '>' . $opt . '</option>';
-            }
-            ?>
-        </select>
+        <label for="imageToUpload">Upload Artwork</label>
+          <textarea name="artworkPath" placeholder="Artwork" class="form-control" id="artworkPath"><?php echo htmlspecialchars(($edit) ? $album['artworkPath'] : '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+   
     </div>
--->
-
-<!--
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" value="<?php echo htmlspecialchars($edit ? $customer['email'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="E-Mail Address" class="form-control" id="email">
-    </div>
-
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input name="phone" value="<?php echo htmlspecialchars($edit ? $customer['phone'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="987654321" class="form-control"  type="text" id="phone">
-    </div>
-
-    <div class="form-group">
-        <label>Date of birth</label>
-        <input name="date_of_birth" value="<?php echo htmlspecialchars($edit ? $customer['date_of_birth'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Birth date" class="form-control" type="date">
-    </div>
--->
 
     <div class="form-group text-center">
         <label></label>

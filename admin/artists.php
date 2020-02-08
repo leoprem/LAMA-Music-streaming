@@ -26,7 +26,7 @@ if (!$order_by) {
 	$order_by = 'id';
 }
 if (!$order_dir) {
-	$order_dir = 'Desc';
+	$order_dir = 'Asc';
 }
 
 // Get DB instance. i.e instance of MYSQLiDB Library

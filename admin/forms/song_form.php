@@ -6,19 +6,115 @@
 
     <div class="form-group">
         <label for="artist">Artist *</label>
-        <input type="number" name="artist" value="<?php echo htmlspecialchars($edit ? $songs['artist'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Artist Name" class="form-control" required="required" id="artist">
+<!--        <input type="number" name="artist" value="<?php echo htmlspecialchars($edit ? $songs['artist'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Artist Name" class="form-control" required="required" id="artist">-->
+    <select name="artist" id="artist" class="form-control">
+        <?php 
+        
+            $result = mysqli_query($connect,"SELECT id,name FROM Artist");  
+           
+           if(mysqli_num_rows($result) > 0):
+               while($row = mysqli_fetch_assoc($result)):
+        ?>
+            <option 
+            <?php if($edit == 1 && $row['id'] == $album['artist']):?>
+                selected=selected 
+            <?php endif //value taken to database?> 
+                value="<?php echo $row['id'];?>"
+            >
+            
+            <?php echo $row['name']; ?>        
+            
+            </option>     
+        <?php
+             endwhile;
+            endif;
+        ?>
+        
+    </select>
     </div>
      <div class="form-group">
         <label for="album">Album *</label>
-        <input type="number" name="album" value="<?php echo htmlspecialchars($edit ? $songs['album'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Album name" class="form-control" required="required" id="album">
+<!--        <input type="number" name="album" value="<?php echo htmlspecialchars($edit ? $songs['album'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="Album name" class="form-control" required="required" id="album">-->
+    <select name="album" id="album" class="form-control">
+        <?php 
+        
+            $result = mysqli_query($connect,"SELECT id,title FROM Album");  
+           
+           if(mysqli_num_rows($result) > 0):
+               while($row = mysqli_fetch_assoc($result)):
+        ?>
+            <option 
+            <?php if($edit == 1 && $row['id'] == $album['album']):?>
+                selected=selected 
+            <?php endif //value taken to database?> 
+                value="<?php echo $row['id'];?>"
+            >
+            
+            <?php echo $row['title']; ?>        
+            
+            </option>     
+        <?php
+             endwhile;
+            endif;
+        ?>
+        
+    </select>
     </div>
      <div class="form-group">
         <label for="language">Language *</label>
-        <input type="number" name="language" value="<?php echo htmlspecialchars($edit ? $songs['language'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="language" class="form-control" required="required" id="language">
+<!--        <input type="number" name="language" value="<?php echo htmlspecialchars($edit ? $songs['language'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="language" class="form-control" required="required" id="language">-->
+    <select name="language" id="language" class="form-control">
+        <?php 
+        
+            $result = mysqli_query($connect,"SELECT id,language FROM languages");  
+           
+           if(mysqli_num_rows($result) > 0):
+               while($row = mysqli_fetch_assoc($result)):
+        ?>
+            <option 
+            <?php if($edit == 1 && $row['id'] == $album['language']):?>
+                selected=selected 
+            <?php endif //value taken to database?> 
+                value="<?php echo $row['id'];?>"
+            >
+            
+            <?php echo $row['language']; ?>        
+            
+            </option>     
+        <?php
+             endwhile;
+            endif;
+        ?>
+        
+    </select>
     </div>
     <div class="form-group">
         <label for="genre">Genre *</label>
-        <input type="number" name="genre" value="<?php echo htmlspecialchars($edit ? $songs['genre'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="genre" class="form-control" required="required" id="genre">
+<!--        <input type="number" name="genre" value="<?php echo htmlspecialchars($edit ? $songs['genre'] : '', ENT_QUOTES, 'UTF-8'); ?>" placeholder="genre" class="form-control" required="required" id="genre">-->
+     <select name="genre" id="genre" class="form-control">
+        <?php 
+        
+            $result = mysqli_query($connect,"SELECT id,name FROM genres");  
+           
+           if(mysqli_num_rows($result) > 0):
+               while($row = mysqli_fetch_assoc($result)):
+        ?>
+            <option 
+            <?php if($edit == 1 && $row['id'] == $album['genre']):?>
+                selected=selected 
+            <?php endif //value taken to database?> 
+                value="<?php echo $row['id'];?>"
+            >
+            
+            <?php echo $row['name']; ?>        
+            
+            </option>     
+        <?php
+             endwhile;
+            endif;
+        ?>
+        
+    </select>
     </div>
     <div class="form-group">
         <label for="duration">Duration *</label>

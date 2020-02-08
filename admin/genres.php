@@ -3,10 +3,6 @@ session_start();
 require_once 'config/config.php';
 require_once BASE_PATH . '/includes/auth_validate.php';
 
-// Costumers class
-require_once BASE_PATH . '/lib/Albums/Album.php';
-$album = new Album();
-
 // Get Input data from query string
 $order_by	= filter_input(INPUT_GET, 'order_by');
 $order_dir	= filter_input(INPUT_GET, 'order_dir');
@@ -31,13 +27,12 @@ if (!$order_dir) {
 
 // Get DB instance. i.e instance of MYSQLiDB Library
 $db = getDbInstance();
-$select = array('id', 'title', 'artist', 'genre', 'artworkPath');
+$select = array('id','name');
 
 // Start building query according to input parameters
 // If search string
 if ($search_str) {
-	$db->where('title', '%' . $search_str . '%', 'like');
-	$db->orwhere('artist', '%' . $search_str . '%', 'like');
+	$db->where('name', '%' . $search_str . '%', 'like');
 }
 // If order direction option selected
 if ($order_dir) {
@@ -48,7 +43,7 @@ if ($order_dir) {
 $db->pageLimit = $pagelimit;
 
 // Get result of the query
-$rows = $db->arraybuilder()->paginate('album', $page, $select);
+$rows = $db->arraybuilder()->paginate('genres', $page, $select);
 $total_pages = $db->totalPages;
 ?>
 <?php include BASE_PATH . '/includes/header.php'; ?>
@@ -56,11 +51,11 @@ $total_pages = $db->totalPages;
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-6">
-            <h1 class="page-header">Albums</h1>
+            <h1 class="page-header">Genres</h1>
         </div>
         <div class="col-lg-6">
             <div class="page-action-links text-right">
-                <a href="add_album.php?operation=create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Add new</a>
+                <a href="add_genre.php?operation=create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Add new</a>
             </div>
         </div>
     </div>
@@ -73,12 +68,6 @@ $total_pages = $db->totalPages;
             <input type="text" class="form-control" id="input_search" name="search_str" value="<?php echo htmlspecialchars($search_str, ENT_QUOTES, 'UTF-8'); ?>">
             <label for="input_order">Order By</label>
             <select name="order_by" class="form-control">
-                <?php
-foreach ($album->setOrderingValues() as $opt_value => $opt_name):
-	($order_by === $opt_value) ? $selected = 'selected' : $selected = '';
-	echo ' <option value="' . $opt_value . '" ' . $selected . '>' . $opt_name . '</option>';
-endforeach;
-?>
             </select>
             <select name="order_dir" class="form-control" id="input_order">
                 <option value="Asc" <?php
@@ -103,10 +92,7 @@ if ($order_dir == 'Desc') {
         <thead>
             <tr>
                 <th width="5%">ID</th>
-                <th width="35%">Title</th>
-                <th width="20%">Artist</th>
-                <th width="10%">Genre</th>
-                <th width="20%">Artwork Path</th>
+                <th width="85%">Genre</th>
                 <th width="10%">Actions</th>
             </tr>
         </thead>
@@ -114,19 +100,16 @@ if ($order_dir == 'Desc') {
             <?php foreach ($rows as $row): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-                <td><?php echo htmlspecialchars($row['title']); ?></td>
-                <td><?php echo htmlspecialchars($row['artist']); ?></td>
-                <td><?php echo htmlspecialchars($row['genre']); ?></td>
-                <td><?php echo htmlspecialchars($row['artworkPath']); ?></td>
+                <td><?php echo htmlspecialchars($row['name']); ?></td>
                 <td>
-                    <a href="edit_album.php?album_id=<?php echo $row['id']; ?>&operation=edit" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="edit_genre.php?genre_id=<?php echo $row['id']; ?>&operation=edit" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
                     <a href="#" class="btn btn-danger delete_btn" data-toggle="modal" data-target="#confirm-delete-<?php echo $row['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
                 </td>
             </tr>
             <!-- Delete Confirmation Modal -->
             <div class="modal fade" id="confirm-delete-<?php echo $row['id']; ?>" role="dialog">
                 <div class="modal-dialog">
-                    <form action="delete_album.php" method="POST">
+                    <form action="delete_genre.php" method="POST">
                         <!-- Modal content -->
                         <div class="modal-content">
                             <div class="modal-header">
@@ -152,7 +135,7 @@ if ($order_dir == 'Desc') {
     <!-- //Table -->
     <!-- Pagination -->
     <div class="text-center">
-    	<?php echo paginationLinks($page, $total_pages, 'albums.php'); ?>
+    	<?php echo paginationLinks($page, $total_pages, 'genres.php'); ?>
     </div>
     <!-- //Pagination -->
 </div>
