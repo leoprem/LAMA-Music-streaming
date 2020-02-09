@@ -3,6 +3,8 @@
 
 //    session_destroy()
     include("includes/config.php");
+    include("includes/classes/Artist.php");
+    include("includes/classes/Album.php");
 
     if(isset($_SESSION['userLoggedIn']))
     {

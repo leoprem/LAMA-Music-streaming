@@ -23,6 +23,20 @@ function getInputValue($name)
 <head>
     <meta charset="UTF-8">
     <title>Welcome to LAMA music</title>
+    
+        <style type="text/css">
+            <?php
+                $bg = array('bg_2.jpg','bg_3.jpg');
+                $i = rand(0, count($bg)-1); // generate random number size of the array
+                $selectedBg = "$bg[$i]"
+            ?>
+           #background
+                {
+                    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url(assets/images/<?php echo $selectedBg;?>);
+                } 
+            
+        </style>
+    
     <link rel="stylesheet" href="assets/css/register.css">
     <link href="https://fonts.googleapis.com/css?family=Abel|Gloria+Hallelujah&display=swap" rel="stylesheet"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

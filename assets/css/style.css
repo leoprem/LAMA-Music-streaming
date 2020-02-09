@@ -244,6 +244,7 @@ body
 {
     padding: 20px;
     text-align: center;
+    letter-spacing: 3px;
 }
 .gridViewItem
 {
@@ -273,3 +274,37 @@ body
     white-space: nowrap
 }
 /* Mainview END*/
+
+/*Album_page START*/
+.entityInfo
+{
+    padding: 40px 0px 10px 0px;
+    display: inline-block;
+    width: 100%;
+}
+.entityInfo .leftSection
+{
+    width: 30%;
+    float: left;
+    max-width: 250px;
+}
+.entityInfo .leftSection img
+{
+    width: 100%;
+}
+.entityInfo .rightSection
+{
+    width: 70%;
+    float: left;
+    padding: 5px 10px 5px 40px;
+    box-sizing: border-box;
+}
+.entityInfo .rightSection h2
+{
+    margin-top: 0px;
+}
+.entityInfo .rightSection span
+{
+    color: #a0a0a0;
+    font-weight: 300;
+}
