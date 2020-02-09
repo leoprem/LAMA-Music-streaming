@@ -16,7 +16,7 @@
                while($row = mysqli_fetch_assoc($result)):
         ?>
             <option 
-            <?php if($edit == 1 && $row['id'] == $album['artist']):?>
+            <?php if($edit == 1 && $row['id'] == $songs['artist']):?>
                 selected=selected 
             <?php endif //value taken to database?> 
                 value="<?php echo $row['id'];?>"
@@ -44,7 +44,7 @@
                while($row = mysqli_fetch_assoc($result)):
         ?>
             <option 
-            <?php if($edit == 1 && $row['id'] == $album['album']):?>
+            <?php if($edit == 1 && $row['id'] == $songs['album']):?>
                 selected=selected 
             <?php endif //value taken to database?> 
                 value="<?php echo $row['id'];?>"
@@ -72,7 +72,7 @@
                while($row = mysqli_fetch_assoc($result)):
         ?>
             <option 
-            <?php if($edit == 1 && $row['id'] == $album['language']):?>
+            <?php if($edit == 1 && $row['id'] == $songs['language']):?>
                 selected=selected 
             <?php endif //value taken to database?> 
                 value="<?php echo $row['id'];?>"
@@ -100,7 +100,7 @@
                while($row = mysqli_fetch_assoc($result)):
         ?>
             <option 
-            <?php if($edit == 1 && $row['id'] == $album['genre']):?>
+            <?php if($edit == 1 && $row['id'] == $songs['genre']):?>
                 selected=selected 
             <?php endif //value taken to database?> 
                 value="<?php echo $row['id'];?>"
@@ -150,7 +150,7 @@
 <!--
     <div class="form-group">
         <label for="artworkPath">Upload Artwork</label>
-          <textarea name="artworkPath" placeholder="Artwork" class="form-control" id="artworkPath"><?php echo htmlspecialchars(($edit) ? $album['artworkPath'] : '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+          <textarea name="artworkPath" placeholder="Artwork" class="form-control" id="artworkPath"><?php echo htmlspecialchars(($edit) ? $songs['artworkPath'] : '', ENT_QUOTES, 'UTF-8'); ?></textarea>
     </div>
 -->
     

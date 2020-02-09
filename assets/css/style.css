@@ -1,18 +1,34 @@
-/*    COLOR #182848 */
+/*  
+COLORS:
+    BODY BG      : #152340
+    NowPlayingBar: #182848
+    navBar       : #13203B
+*/
 body,html
 {
     margin: 0;
     padding: 0;
+    
 }
 *{
     font-family: Helvetica,Arial,sans-serif; 
     color: #fff;
+    letter-spacing: 1px;
+}
+body
+{
+    background-color: #152340;
+    font-size: 14px;
+    min-width: 720px;
 }
 #topContainer
 {
     min-height: 100%;
     width: 100%;
 }
+
+
+/*Now playing bar START*/
 #nowPlayingContainer
 {
     width: 100%;
@@ -130,6 +146,7 @@ body,html
     margin: 6px 0;
     display: inline-block;
     width: 100%;
+    font-size: 16px;
 }
 #nowPlayingLeft .trackInfo .artistName span
 {
@@ -147,6 +164,13 @@ body,html
 {
     width: 125px;
 }
+
+/*Now playing bar END*/
+
+
+
+/*NAVBAR START*/
+
 #navBarContainer
 {
     background-color: #13203B;
@@ -202,3 +226,50 @@ body,html
     width: 30px;
 
 }
+
+/*NAVBAR END*/
+
+/* Mainview START*/
+#mainViewContainer
+{
+    margin-left: 200px;
+    padding-bottom: 90px;
+    width: calc(100% - 200px)
+}
+#mainContent
+{
+    padding: 0 20px;
+}
+.pageHeadingBig
+{
+    padding: 20px;
+    text-align: center;
+}
+.gridViewItem
+{
+    display:  inline-block;
+    margin-right: 20px;
+    width: 29%;
+    max-width: 200px;
+    min-width: 150px;
+    margin-bottom: 20px;
+}
+.gridViewItem img
+{
+    width: 100%;
+    
+}
+.gridViewItem a
+{
+    text-decoration: none;
+}
+.gridViewInfo
+{
+    font-weight: 600;
+    text-align: center;
+    padding: 5px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+/* Mainview END*/
