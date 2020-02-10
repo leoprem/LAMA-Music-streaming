@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
-    
-    <h1 class="pageHeadingBig">Music You May Like</h1>
+    <h2 class="username">Hi <?php echo $userLoggedIn ?></h2>
+    <h1 class="pageHeadingBig">Some Music You May Like</h1>
     
                <div class="gridViewContainer">
                    <img src="" alt="">

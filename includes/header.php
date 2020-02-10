@@ -5,6 +5,10 @@
     include("includes/config.php");
     include("includes/classes/Artist.php");
     include("includes/classes/Album.php");
+        include("includes/classes/Language.php");
+    include("includes/classes/Genre.php");
+    include("includes/classes/Song.php");
+    
 
     if(isset($_SESSION['userLoggedIn']))
     {
@@ -23,6 +27,8 @@
     <meta charset="UTF-8">
     <title>LAMA-music</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </head>
 <body>
      <div id="mainContainer">

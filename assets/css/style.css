@@ -230,6 +230,14 @@ body
 /*NAVBAR END*/
 
 /* Mainview START*/
+.username
+{
+    padding: 0;
+    margin-bottom: 0px;
+    display: block;
+    text-align: center;
+    color: #a0a0a0;
+}
 #mainViewContainer
 {
     margin-left: 200px;
@@ -242,7 +250,7 @@ body
 }
 .pageHeadingBig
 {
-    padding: 20px;
+    padding: 0px 0px 20px 0px;
     text-align: center;
     letter-spacing: 3px;
 }
@@ -303,8 +311,87 @@ body
 {
     margin-top: 0px;
 }
-.entityInfo .rightSection span
+.entityInfo .rightSection p
 {
     color: #a0a0a0;
     font-weight: 300;
+}
+
+/*SONGS LIST STYLE START*/
+.trackList
+{
+    padding: 0;
+}
+.trackListRow
+{
+    height: 40px;
+    padding:15px 10px;
+    list-style: none;
+}
+.trackListRow:hover{
+    background-color: #1c2c4a;
+}
+.trackListRow span
+{
+    color: #a0a0a0;
+    font-weight: 200;
+    
+}
+.trackListRow .trackNumber
+{
+    width: 8%;
+    float: left;
+    
+}
+.trackListRow .trackNumber img
+{
+    width: 20px;
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+    
+}
+.trackListRow:hover .trackNumber img
+{
+    visibility: visible;    
+}
+.trackListRow:hover .trackNumber span
+{
+    visibility: hidden;    
+}
+
+.trackListRow .trackInfo
+{
+    width: 75%;
+    float: left;
+}
+.trackListRow .trackInfo .trackName
+{
+    color: #fff;
+    margin-bottom: 7px
+}
+.trackListRow .trackInfo span
+{
+    display: block;
+}
+.trackListRow .trackOptions
+{
+    width: 5%;
+    float: left;
+    text-align: right;
+}
+.trackListRow .trackOptions img
+{
+    width:20px;
+    visibility: hidden;
+}
+.trackListRow:hover .trackOptions img
+{
+    visibility: visible;
+}
+.trackListRow .trackDuration
+{
+    width: 12%;
+    float: left;
+    text-align: right;
 }
