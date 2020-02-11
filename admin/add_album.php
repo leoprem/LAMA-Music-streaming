@@ -14,8 +14,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     //$data_to_db['created_by'] = $_SESSION['user_id'];
     //$data_to_db['created_at'] = date('Y-m-d H:i:s');
 
+
+// file upload
+
+include("includes/artwork_upload.php"); //returns true $file_error if any error in file upload
+
+$last_id = false;
+    
+if(!$file_error)
+{
+//    $imageFileType: File type extention
+    
+    $ph= date("dmhms"); //date month hour minute second
+    $filepath=$target_dir. $ph .".".$imageFileType;
+    move_uploaded_file($_FILES["artworkPath"]["tmp_name"], $filepath);
+    $data_to_db['artworkPath'] = $filepath;
     $db = getDbInstance();
     $last_id = $db->insert('album', $data_to_db);
+}
+
+
+
+/////////////////end   
+    
+    
+    
+  
+
+  
 
     if ($last_id)
     {
@@ -29,9 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
         echo 'Insert failed: ' . $db->getLastError();
         exit();
+
     }
-    
-    
 }
 
 // We are using same form for adding and editing. This is a create form so declare $edit = false.
@@ -61,7 +86,12 @@ $(document).ready(function(){
 //            l_name: {
 //                required: true,
 //                minlength: 3
-//            },   
+//            },
+            artworkPath:{
+                required: true, 
+                extension: "png|jpe?g|gif", 
+                filesize: 1048576 
+            }
         }
     });
 });

@@ -63,13 +63,15 @@
     </div>
     
     <div class="form-group">
-        <label for="imageToUpload">Upload Artwork</label>
-          <textarea name="artworkPath" placeholder="Artwork" class="form-control" id="artworkPath"><?php echo htmlspecialchars(($edit) ? $album['artworkPath'] : '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-   
+        <label for="artworkPath">Upload Artwork</label>
+          <!-- <textarea name="artworkPath" placeholder="Artwork" class="form-control" id="artworkPath">
+          <?php //echo htmlspecialchars(($edit) ? $album['artworkPath'] : '', ENT_QUOTES, 'UTF-8'); ?>
+          </textarea> -->
+          <input type="file"  name="artworkPath" class="form-control" id="artworkPath" accept="image/gif, image/jpeg, image/png" required="required">
     </div>
 
     <div class="form-group text-center">
         <label></label>
-        <button type="submit" class="btn btn-warning" >Save <i class="glyphicon glyphicon-send"></i></button>
+        <button type="submit" class="btn btn-warning"  >Save <i class="glyphicon glyphicon-send"></i></button>
     </div>
 </fieldset>

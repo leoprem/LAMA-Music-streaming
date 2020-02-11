@@ -12,11 +12,16 @@ if ($del_id && $_SERVER['REQUEST_METHOD'] == 'POST')
         exit;
 
 	}
+    
     $album_id = $del_id;
-
+    $path_db = getDbInstance();
+    $path_db->where('id', $album_id);
+    $art_path = $path_db->getvalue('album','artworkPath');
+    
     $db = getDbInstance();
     $db->where('id', $album_id);
     $status = $db->delete('album');
+    $status = unlink($art_path);
     
     if ($status) 
     {

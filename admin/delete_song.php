@@ -8,15 +8,21 @@ if ($del_id && $_SERVER['REQUEST_METHOD'] == 'POST')
 
 	if($_SESSION['admin_type']!='super'){
 		$_SESSION['failure'] = "You don't have permission to perform this action";
-    	header('location: customers.php');
+    	header('location: songs.php');
         exit;
 
 	}
     $song_id = $del_id;
 
+    $path_db = getDbInstance();
+    $path_db->where('id', $song_id);
+    $art_path = $path_db->getvalue('songs','path');
+    
     $db = getDbInstance();
     $db->where('id', $song_id);
     $status = $db->delete('songs');
+    
+    $status = unlink($art_path);
     
     if ($status) 
     {

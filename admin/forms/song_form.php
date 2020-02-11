@@ -122,7 +122,7 @@
     </div>
     <div class="form-group">
         <label for="path">Path *</label>
-        <input type="text" name="path" value="<?php echo htmlspecialchars($edit ? $songs['path'] : 'assets\music', ENT_QUOTES, 'UTF-8'); ?>" placeholder="path" class="form-control" required="required" id="path">
+        <input type="file"  name="path" class="form-control" id="path" accept="audio/mp3, audio/wav" required="required">
     </div>
     <div class="form-group">
         <label for="albumOrder">Album Order *</label>

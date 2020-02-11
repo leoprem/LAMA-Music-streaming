@@ -20,14 +20,14 @@ class Songs
      */
     public function setOrderingValues()
     {
-        $ordering = [
+        $ordering = array(
             'id' => 'ID',
             'title' => 'Title',
             'artist' => 'Artist',
             'album' => 'Album',
             'language' => 'Language',
             'genre' => 'Genre'
-        ];
+        );
 
         return $ordering;
     }

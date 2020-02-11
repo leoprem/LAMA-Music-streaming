@@ -13,8 +13,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     //$data_to_db['created_by'] = $_SESSION['user_id'];
     //$data_to_db['created_at'] = date('Y-m-d H:i:s');
 
+    
+    // file upload
+
+include("includes/song_upload.php"); //returns true $file_error if any error in file upload
+
+$last_id = false;
+    
+if(!$file_error)
+{
+//    $imageFileType: File type extention
+    
+    $ph= date("dmhms"); //date month hour minute second
+    $filepath=$target_dir. $ph .".".$imageFileType;
+    move_uploaded_file($_FILES["path"]["tmp_name"], $filepath);
+    $data_to_db['path'] = $filepath;
     $db = getDbInstance();
     $last_id = $db->insert('songs', $data_to_db);
+}
+
+
+
+/////////////////end   
+    
+    
+    
+    
+    
 
     if ($last_id)
     {

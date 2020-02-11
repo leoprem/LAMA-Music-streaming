@@ -20,13 +20,13 @@ class Album
      */
     public function setOrderingValues()
     {
-        $ordering = [
+        $ordering = array(
             'id' => 'ID',
             'title' => 'Title',
             'artist' => 'Artist',
             'genre' => 'Genre',
             'artworkPath' => 'Artwork',
-        ];
+        );
 
         return $ordering;
     }
