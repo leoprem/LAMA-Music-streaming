@@ -36,7 +36,7 @@
         }
         public function getArtworkPath()
         {
-            return $this->artworkPath;
+            return ART_PATH.$this->artworkPath;
         }  
         public function getNumberOfSongs()
         {

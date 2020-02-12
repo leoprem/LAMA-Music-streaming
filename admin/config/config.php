@@ -7,6 +7,9 @@ define('BASE_PATH', dirname(dirname(__FILE__)));
 define('APP_FOLDER', 'simpleadmin');
 define('CURRENT_PAGE', basename($_SERVER['REQUEST_URI']));
 
+define('ART_PATH', '../assets/images/artwork/');
+define('SONG_PATH', '../assets/music/');
+
 require_once BASE_PATH . '/lib/MysqliDb/MysqliDb.php';
 require_once BASE_PATH . '/helpers/helpers.php';
 

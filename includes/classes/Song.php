@@ -27,12 +27,16 @@
             $this->languageId = $mysqliData['language'];
             $this->genreId = $mysqliData['genre'];
             $this->duration = $mysqliData['duration'];
-            $this->path = $mysqliData['path'];
+            $this->path = SONG_PATH.$mysqliData['path'];
             
         } 
         public function getTitle()
         {
             return $this->title;
+        }
+         public function getId()
+        {
+            return $this->id;
         }
         public function getArtist()
         {

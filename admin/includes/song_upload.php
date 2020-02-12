@@ -1,7 +1,6 @@
 <?php
         $target_dir = "../assets/music/";
         $target_file = $target_dir . basename($_FILES["path"]["name"]);
-        echo basename($_FILES["path"]["name"]);
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         $file_error = false;
         if (file_exists($target_file)) 
@@ -12,7 +11,7 @@
             exit();
         }   
         // Check file size
-        if ($_FILES["path"]["size"] > 1000000) {
+        if ($_FILES["path"]["size"] > 10000000) {
             $_SESSION['failure']="Sorry, your file is too large.";
             $file_error = true;
             header('Location: songs.php');

@@ -25,9 +25,10 @@ if(!$file_error)
 //    $imageFileType: File type extention
     
     $ph= date("dmhms"); //date month hour minute second
-    $filepath=$target_dir. $ph .".".$imageFileType;
+    $filepath=$target_dir.$ph .".".$imageFileType;
     move_uploaded_file($_FILES["path"]["tmp_name"], $filepath);
-    $data_to_db['path'] = $filepath;
+    
+    $data_to_db['path'] = $ph .".".$imageFileType;
     $db = getDbInstance();
     $last_id = $db->insert('songs', $data_to_db);
 }
@@ -49,11 +50,11 @@ if(!$file_error)
         // Important! Don't execute the rest put the exit/die.
     	exit();
     }
-    else
-    {
-        echo 'Insert failed: ' . $db->getLastError();
-        exit();
-    }
+//    else
+//    {
+//        echo 'Insert failed: ' . $db->getLastError();
+//        exit();
+//    }
 }
 
 // We are using same form for adding and editing. This is a create form so declare $edit = false.

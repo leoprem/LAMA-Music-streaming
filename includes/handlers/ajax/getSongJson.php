@@ -7,7 +7,7 @@
         $query = mysqli_query($con,"SELECT * FROM songs WHERE id = '$songId' ");
         
         $result = mysqli_fetch_assoc($query);
-        
+        $result['path'] = SONG_PATH.$result['path'];
         echo json_encode($result);
     }
 

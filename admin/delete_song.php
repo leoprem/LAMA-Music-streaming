@@ -16,26 +16,26 @@ if ($del_id && $_SERVER['REQUEST_METHOD'] == 'POST')
 
     $path_db = getDbInstance();
     $path_db->where('id', $song_id);
-    $art_path = $path_db->getvalue('songs','path');
+    $song_path = $path_db->getvalue('songs','path');
     
     $db = getDbInstance();
     $db->where('id', $song_id);
     $status = $db->delete('songs');
     
-    $status = unlink($art_path);
-    
+    $status = unlink(SONG_PATH.$song_path);
+    echo SONG_PATH.$song_path;
     if ($status) 
     {
         $_SESSION['info'] = "Song deleted successfully!";
         header('location: songs.php');
         exit;
     }
-    else
-    {
-    	$_SESSION['failure'] = "Unable to delete song.";
-    	header('location: songs.php');
-        exit;
-
-    }
+//    else
+//    {
+//    	$_SESSION['failure'] = "Unable to delete song.";
+//    	header('location: songs.php');
+//        exit;
+//
+//    }
     
 }

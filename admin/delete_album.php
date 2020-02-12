@@ -21,7 +21,7 @@ if ($del_id && $_SERVER['REQUEST_METHOD'] == 'POST')
     $db = getDbInstance();
     $db->where('id', $album_id);
     $status = $db->delete('album');
-    $status = unlink($art_path);
+    $status = unlink(ART_PATH.$art_path);
     
     if ($status) 
     {

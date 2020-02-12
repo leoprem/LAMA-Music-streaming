@@ -395,3 +395,80 @@ body
     float: left;
     text-align: right;
 }
+
+/*ARTIST PAGE*/
+.artistInfo
+{
+    text-align: center;
+}
+.button
+{
+    color:#fff;
+
+    cursor: pointer;
+
+    margin-bottom: 10px;
+
+    background-color:
+    transparent;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    border: 2px solid
+    #fff;
+
+    border-radius: 500px;
+
+    padding: 15px;
+
+    min-width: 130px;
+}
+
+.button.color
+{
+    background-color: #454b66;
+    border-color: #454b66;
+}
+.borderBottom
+{
+    border-bottom:1px solid #454b66;
+    margin-bottom: 20px;
+}
+
+.trackListContainer h2, .gridViewContainer h2
+{
+    text-align: center;
+}
+
+[role="link"]
+{
+    cursor: pointer;
+}
+
+.searchContainer
+{
+    background-color:
+    #13203B;
+    padding: 20px 28px;
+}
+.searchContainer h4
+{
+    margin: 0;
+    font-weight: 600;
+}
+.searchContainer input
+{
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	color: #fff;
+	font-weight: 700;
+	font-size: 62px;
+	letter-spacing: 2px;
+}
+input:focus
+{
+    outline: none;
+}

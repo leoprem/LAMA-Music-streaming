@@ -1,5 +1,5 @@
 <?php
-    $songQuery = mysqli_query($con,"SELECT * FROM songs ORDER BY RAND() LIMIT 4");
+    $songQuery = mysqli_query($con,"SELECT * FROM songs ORDER BY RAND() LIMIT 10");
     $resultArray = array();
 
     while($row = mysqli_fetch_assoc($songQuery))
@@ -14,10 +14,10 @@
     
     
     $(document).ready(function(){
-        currentPlaylist = <?php echo $jsonArray ?>;
+        newPlaylist = <?php echo $jsonArray ?>;
         audioElement = new Audio();
-        console.log(currentPlaylist[0]);
-        setTrack(currentPlaylist[0],currentPlaylist,false);
+        console.log(newPlaylist[0]);
+        setTrack(newPlaylist[0],newPlaylist,false);
         updateVolumeProgressBar(audioElement.audio);
         //progress bar movement control
         
@@ -113,7 +113,8 @@
         {
             currentIndex++;
         }
-        var trackToPlay = currentPlaylist[currentIndex];
+        var trackToPlay = shuffle? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
+        
         setTrack(trackToPlay,currentPlaylist,true);
     }
     
@@ -131,10 +132,53 @@
         var imageName =  audioElement.audio.muted? "volume-mute.png":"volume.png";
         $(".controlButton.volume img").attr("src","assets/images/icons/"+imageName);
     }
+     function setShuffle()
+    {
+        shuffle = !shuffle;
+        var imageName =  shuffle? "shuffle-active.png":"shuffle.png";
+        $(".controlButton.shuffle img").attr("src","assets/images/icons/"+imageName);
+        
+        if(shuffle)
+            {
+                shuffleArray(shufflePlaylist);
+                currentIndex = shufflePlaylist.indexOf(audioElement.currentlyPlaying.id);
+            }
+            else
+                {
+                   currentIndex = currentPlaylist.indexOf(audioElement.currentlyPlaying.id);
+                }
+    }
+    
+    function shuffleArray(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+    
+    
     function setTrack(trackId,newPlaylist,play)
     {
-            currentIndex = currentPlaylist.indexOf(trackId);
-        
+        if(currentPlaylist != newPlaylist)
+            {
+                currentPlaylist = newPlaylist;
+                shufflePlaylist = currentPlaylist.slice();
+                shuffleArray(shufflePlaylist);
+            }
+        if(shuffle)
+            {
+                currentIndex = shufflePlaylist.indexOf(trackId);
+            }
+        else
+            {
+                currentIndex = currentPlaylist.indexOf(trackId);
+            }
+       
+        pauseSong();
         $.post("includes/handlers/ajax/getSongJson.php",{songId : trackId },function(data){
            
             
@@ -144,17 +188,20 @@
             $.post("includes/handlers/ajax/getArtistJson.php",{artistId : track.artist },function(data){
                  var artist = JSON.parse(data);
                 $(".artistName span").text(artist.name); 
+                $(".artistName span").attr("onclick","openPage('artist.php?id="+artist.id+"')");
             });
             $.post("includes/handlers/ajax/getAlbumJson.php",{albumId : track.album },function(data){
                  var album = JSON.parse(data);
                 $(".albumLink img").attr("src",album.artworkPath); 
+                $(".albumLink img").attr("onclick","openPage('album_page.php?id="+album.id+"')"); 
+                $(".trackName span").attr("onclick","openPage('album_page.php?id="+album.id+"')"); 
+                
             });
-                   
             audioElement.setTrack(track);
             if(play)
-            {
-                playSong();
-            }
+                {
+                    playSong();
+                }
         });
         
     }
@@ -183,15 +230,15 @@
       <div id="nowPlayingLeft">
           <div class="content">
               <span class="albumLink">
-                  <img class = "albumArt" src="">
+                  <img role="link" tabindex="0" class = "albumArt" src="" class="albumArtwork" >
               </span>
 
               <div class="trackInfo">
                   <span class="trackName">
-                      <span></span>
+                      <span role="link" tabindex="0"></span>
                   </span>
                    <span class="artistName">
-                      <span></span>
+                      <span role="link" tabindex="0"></span>
                   </span>
               </div>
           </div>
@@ -199,7 +246,7 @@
       <div id="nowPlayingCenter">
           <div class="content playerControls">
               <div class="buttons">
-                  <button class="controlButton shuffle" title="Shuffle Button">
+                  <button class="controlButton shuffle" title="Shuffle Button" onclick="setShuffle()">
                       <img src="assets/images/icons/shuffle.png" alt="shuffle">
                   </button>
                   <button class="controlButton previous" title="Previous Button" onclick="prevSong()">

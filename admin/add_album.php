@@ -28,7 +28,7 @@ if(!$file_error)
     $ph= date("dmhms"); //date month hour minute second
     $filepath=$target_dir. $ph .".".$imageFileType;
     move_uploaded_file($_FILES["artworkPath"]["tmp_name"], $filepath);
-    $data_to_db['artworkPath'] = $filepath;
+    $data_to_db['artworkPath'] =  $ph .".".$imageFileType;
     $db = getDbInstance();
     $last_id = $db->insert('album', $data_to_db);
 }
