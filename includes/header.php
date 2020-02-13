@@ -8,12 +8,14 @@
     include("includes/classes/Language.php");
     include("includes/classes/Genre.php");
     include("includes/classes/Song.php");
+    include("includes/classes/User.php");
     
 
     if(isset($_SESSION['userLoggedIn']))
     {
-        $userLoggedIn = $_SESSION['userLoggedIn'];
-        echo "<script>userLoggedIn = '$userLoggedIn';</script>";
+      $userLoggedIn = new User($con,$_SESSION['userLoggedIn']);
+      $username = $userLoggedIn->getUsername();
+      echo "<script>userLoggedIn = '$username';</script>";
     }
     else
     {
@@ -28,6 +30,7 @@
     <meta charset="UTF-8">
     <title>LAMA-music</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
 </head>

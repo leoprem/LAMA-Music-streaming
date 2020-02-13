@@ -6,7 +6,8 @@
         
         $album = new Album($con,$album_id);
         
-        $artist = $album->getArtist();          //returns Artist class object          
+        $artist = $album->getArtist();          //returns Artist class object    
+        $artistId=$artist->getId();
     }
     else{
         header("Location: index.php");
@@ -19,7 +20,7 @@
     </div>
     <div class="rightSection">
         <h2><?php echo $album->getTitle(); ?></h2>
-        <p>By <?php echo $artist->getName(); ?></p>
+        <p role='link' tabindex="0" onclick="openPage('album_page.php?id=<?php echo $artistId; ?>')">By <?php echo $artist->getName(); ?></p>
         <p><?php echo $album->getNumberOfSongs(); ?> Songs</p>
         
     </div>
@@ -58,7 +59,8 @@
                             </div>
                             
                             <div class='trackOptions'>
-                                <img class='optionsButton' src='assets/images/icons/more.png'>
+                                <input type='hidden' class = 'songId' value='".$albumSong->getId()."'>
+                                <img class='optionsButton' src='assets/images/icons/more.png' onclick='showOptionsMenu(this)'>
                             </div>
                             <div class='trackDuration'>
                                 <span classs='Duration'>". $albumSong->getDuration() ."
@@ -76,7 +78,10 @@
     </ul>
 </div>
 
-
+<nav class="optionMenu">
+        <input type="hidden" class="songId">
+        <?php echo Playlist::getPlaylistDropdown($con,$userLoggedIn->getUsername()); ?>
+</nav>
 
 
 
