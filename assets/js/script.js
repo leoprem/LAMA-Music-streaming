@@ -57,11 +57,12 @@ function updatePassword(oldPasswordClass,newPasswordClass1,newPasswordClass2)
            { 
             oldPassword: oldPassword, 
             newPassword1: newPassword1,
-            newPassword2: newPassword2
+            newPassword2: newPassword2,
+            username: userLoggedIn
             })
         .done(function(response){
         
-        $("."+oldPassword).nextAll(".message").text(response);
+        $("."+oldPasswordClass).nextAll(".message").text(response);
         
     });
 }
