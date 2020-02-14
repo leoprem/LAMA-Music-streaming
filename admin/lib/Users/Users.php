@@ -27,11 +27,11 @@ class Users
      */
     public function setOrderingValues()
     {
-        $ordering = [
+        $ordering = array(
             'id' => 'ID',
             'user_name' => 'Username',
             'admin_type' => 'Admin Type'
-        ];
+        );
 
         return $ordering;
     }

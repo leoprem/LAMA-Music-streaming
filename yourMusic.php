@@ -17,7 +17,7 @@
     
                      if(mysqli_num_rows($playlistQuery) == 0)
                         {
-                            echo "<span class='noResults'>You don't have any playlists yet. ".$term."</span>";
+                            echo "<span class='noResults'>You don't have any playlists yet</span>";
                         }
     
                         while($row = mysqli_fetch_assoc($playlistQuery)):

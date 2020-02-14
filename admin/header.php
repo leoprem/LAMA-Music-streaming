@@ -55,7 +55,7 @@
 	<!-- start: BODY -->
 	<body>
 		<!-- start: HEADER -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar navbar-default navbar-fixed-top">
 			<!-- start: TOP NAVIGATION CONTAINER -->
 			<div class="container">
 				<div class="navbar-header">

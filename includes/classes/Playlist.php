@@ -39,7 +39,7 @@
         }
         public function getSongIds()
         {
-            $query = mysqli_query($this->con, "SELECT songId FROM playlistSongs WHERE playlistId='$this->id' ORDER BY playlistOrder ASC");
+            $query = mysqli_query($this->con, "SELECT songId FROM playlistSongs WHERE playlistId='$this->id' ORDER BY id ASC");
             $array = array();
             while($row = mysqli_fetch_assoc($query))
             {

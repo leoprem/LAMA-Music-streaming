@@ -28,6 +28,25 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <!--    FAVICONS START-->
+        <link rel="apple-touch-icon" sizes="57x57" href="../assets/images/favicons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../assets/images/favicons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../assets/images/favicons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/images/favicons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../assets/images/favicons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../assets/images/favicons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../assets/images/favicons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../assets/images/favicons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../assets/images/favicons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicons/favicon-16x16.png">
+        <link rel="manifest" href="../assets/images/favicons/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="../assets/images/favicons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+<!--    FAVICONS END-->
         <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
     </head>
@@ -46,7 +65,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="">LAMA Music</a>
+                        <a class="navbar-brand logo" href="index.php">LAMA MUSIC</a>
                     </div>
                     <!-- /.navbar-header -->
 
@@ -57,9 +76,6 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu dropdown-user">
-                                <li><a href="edit_admin.php?admin_user_id=<?php echo $_SESSION['user_id']; ?>&operation=edit"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-                                <li class="divider"></li>
                                 <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                             </ul>
                             <!-- /.dropdown-user -->
@@ -71,16 +87,7 @@
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
-                                <li><a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-                                
-                                <li<?php echo (CURRENT_PAGE == 'customers.php' || CURRENT_PAGE == 'add_customer.php') ? ' class="active"' : ''; ?>>
-                                    <a href="#"><i class="fa fa-user-circle fa-fw"></i> Customers<i class="fa arrow"></i></a>
-                                    <ul class="nav nav-second-level">
-                                        <li><a href="customers.php"><i class="fa fa-list fa-fw"></i> List all</a></li>
-                                        <li><a href="add_customer.php"><i class="fa fa-plus fa-fw"></i> Add New</a></li>
-                                    </ul>
-                                </li>
-                                
+                                <li><a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>                        
                                  <li<?php echo (CURRENT_PAGE == 'users.php') ? ' class="active"' : ''; ?>>
                                     <a href="#"><i class="fa fa-user-circle fa-fw"></i>Users<i class="fa arrow"></i></a>
                                     <ul class="nav nav-second-level">

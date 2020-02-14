@@ -20,14 +20,14 @@ class Users
      */
     public function setOrderingValues()
     {
-        $ordering = [
+        $ordering = array(
             'id' => 'ID',
             'username' => 'Username',
             'firstname' => 'First Name',
             'lastname' => 'Last Name',
             'email' => 'Email',
             'status' =>'Type'
-        ];
+        );
 
         return $ordering;
     }
