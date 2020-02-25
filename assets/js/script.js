@@ -8,7 +8,21 @@ var repeat = false;
 var shuffle = false;
 var userLoggedIn;
 var timer;
+var backStack = [];
+var frontStack = [];
+var curUrl="index.php";
+var popFlag = false;
 
+
+// making back button work
+
+$(window).on('popstate', function(event) {
+  var changePage = backStack.pop();
+    frontStack.push(curUrl);
+    popFlag = true;
+    openPage(changePage);
+});
+//button work end
 
 
 $(window).scroll(function(){
@@ -86,7 +100,16 @@ function openPage(url)
     var encodedUrl = encodeURI(url+"&userLoggedIn="+userLoggedIn);
     $("#mainContent").load(encodedUrl);
     $("body").scrollTop(0);
+   
+    if(!popFlag)
+    {
+        backStack.push(curUrl);
+    }
+    
+    curUrl = url;
+    console.log(backStack);
     history.pushState(null,null,url); 
+    popFlag = false;
 }
 
 function removeFromPlaylist(button,playlistId)
