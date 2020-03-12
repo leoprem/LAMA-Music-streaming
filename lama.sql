@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 10, 2020 at 07:08 PM
+-- Generation Time: Mar 12, 2020 at 04:09 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `admin_accounts` (
 INSERT INTO `admin_accounts` (`id`, `user_name`, `password`, `series_id`, `remember_token`, `expires`, `admin_type`) VALUES
 (3, 'root', '$2y$10$yb1quRYlI6HmsITLK0YRnewHMRXgFKrmeVdSKlXLlGhbKLcrMOg6S', NULL, NULL, NULL, 'super'),
 (8, 'super', '55c3b5386c486feb662a0785f340938f518d547f', NULL, NULL, NULL, 'super'),
-(9, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', NULL, NULL, NULL, 'super'),
+(9, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', NULL, NULL, NULL, 'admin'),
 (10, 'leo', '5f4dcc3b5aa765d61d8327deb882cf99', 'PQUu6rTAAbSnNoPc', '1d0e1a9b1e4f87e41561fa709eddee33', '2020-03-11 14:14:13', 'super'),
 (11, 'new', '5f4dcc3b5aa765d61d8327deb882cf99', NULL, NULL, NULL, 'super'),
 (12, 'ajith', '5f4dcc3b5aa765d61d8327deb882cf99', NULL, NULL, NULL, 'super');
@@ -67,21 +67,25 @@ CREATE TABLE IF NOT EXISTS `album` (
   `genre` int(11) NOT NULL,
   `artworkPath` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `album`
 --
 
 INSERT INTO `album` (`id`, `title`, `artist`, `genre`, `artworkPath`) VALUES
-(7, 'No. 6', 1, 2, 'assets\\images\\artwork\\no_6.jpg'),
-(2, 'Stoney', 3, 1, 'assets/images/artwork/stoney.jpg'),
-(3, '24k Magic', 2, 5, 'assets/images/artwork/24k_magic.png'),
-(8, 'Eminem', 9, 1, 'assets\\images\\artwork\\eminem.jpg'),
-(9, 'Blinding Lights', 10, 3, 'assets\\images\\artwork\\The_Weeknd_-_Blinding_Lights.png'),
-(10, 'Thank U, Next', 11, 2, 'assets\\images\\artwork\\thank-u-next.jpg'),
-(11, 'When We All Fall Asleep, Where Do We Go?', 12, 2, 'assets\\images\\artwork\\when_we_sleep.jpg'),
-(12, 'Lest We Forget: The Best Of', 13, 7, 'assets\\images\\artwork\\manson.jpg');
+(7, 'No. 6', 1, 2, 'no_6.jpg'),
+(2, 'Stoney', 3, 1, 'stoney.jpg'),
+(3, '24k Magic', 2, 5, '24k_magic.png'),
+(8, 'Eminem', 9, 1, 'eminem.jpg'),
+(9, 'Blinding Lights', 10, 3, 'The_Weeknd_-_Blinding_Lights.png'),
+(10, 'Thank U, Next', 11, 2, 'thank-u-next.jpg'),
+(11, 'When We All Fall Asleep, Where Do We Go?', 12, 2, 'when_we_sleep.jpg'),
+(23, 'Trench', 19, 3, '1203030346.jpg'),
+(18, 'Everyday Life', 15, 1, '1203020304.jpg'),
+(19, 'Shawn Mendes: The Album', 16, 2, '1203020357.jpg'),
+(21, 'Purpose', 17, 2, '1203030305.jpg'),
+(22, 'Red Pill Blues', 18, 2, '1203030341.jpg');
 
 -- --------------------------------------------------------
 
@@ -94,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `artist`
@@ -109,60 +113,12 @@ INSERT INTO `artist` (`id`, `name`) VALUES
 (10, 'The Weeknd'),
 (11, 'Ariana Grande'),
 (12, 'Billie Eilish'),
-(13, 'Marilyn Manson');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
-
-DROP TABLE IF EXISTS `customers`;
-CREATE TABLE IF NOT EXISTS `customers` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `f_name` varchar(25) NOT NULL,
-  `l_name` varchar(25) NOT NULL,
-  `gender` varchar(6) DEFAULT NULL,
-  `address` varchar(100) DEFAULT NULL,
-  `city` varchar(15) DEFAULT NULL,
-  `state` varchar(30) DEFAULT NULL,
-  `phone` varchar(15) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `date_of_birth` date DEFAULT NULL,
-  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `f_name`, `l_name`, `gender`, `address`, `city`, `state`, `phone`, `email`, `date_of_birth`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
-(18, 'bhushan', 'Chhadva', 'male', 'Padmavati', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '1991-06-18', 0, NULL, 0, NULL),
-(19, 'Jayant', 'atre', 'male', 'Priyadarshini A102, adwa2', 'wad', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '1998-05-18', 0, NULL, 0, NULL),
-(21, 'bhushan', 'sutar', 'male', 'Priyadarshini A102, adwa2', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '2016-11-24', 0, NULL, 0, NULL),
-(23, 'Paolo', ' Accorti', 'male', 'Priyadarshini A102, adwa2', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '1992-02-04', 0, NULL, 0, NULL),
-(24, 'Roland', ' Mendel', 'male', 'Priyadarshini A102, adwa2', 'mumbai', 'Maharashtra', '34343432', 'bhusahan2@gmail.com', '2016-11-30', 0, NULL, 0, NULL),
-(25, 'John', 'doe', 'male', 'City, view', '', 'Maharashtra', '8875207658', 'john@abc.com', '2017-01-27', 0, NULL, 0, NULL),
-(26, 'Maria', 'Anders', 'female', 'New york city', '', 'Maharashtra', '8856705387', 'chetanshenai9@gmail.com', '2017-01-28', 0, NULL, 0, NULL),
-(27, 'Ana', ' Trujillo', 'female', 'Street view', '', 'Maharashtra', '9975658478', 'chetanshenai9@gmail.com', '1992-07-16', 0, NULL, 0, NULL),
-(28, 'Thomas', 'Hardy', 'male', '120 Hanover Sq', '', 'Maharashtra', '885115323', 'abc@abc.com', '1985-06-24', 0, NULL, 0, NULL),
-(29, 'Christina', 'Berglund', 'female', 'Berguvsvägen 8', '', 'Maharashtra', '9985125366', 'chetanshenai9@gmail.com', '1997-02-12', 0, NULL, 0, NULL),
-(30, 'Ann', 'Devon', 'male', '35 King George', '', 'Maharashtra', '8865356988', 'abc@abc.com', '1988-02-09', 0, NULL, 0, NULL),
-(31, 'Helen', 'Bennett', 'female', 'Garden House Crowther Way', '', 'Maharashtra', '75207654', 'chetanshenai9@gmail.com', '1983-06-15', 0, NULL, 0, NULL),
-(32, 'Annette', 'Roulet', 'female', '1 rue Alsace-Lorraine', '', ' ', '3410005687', 'abc@abc.com', '1992-01-13', 0, NULL, 0, NULL),
-(33, 'Yoshi', 'Tannamuri', 'male', '1900 Oak St.', '', 'Maharashtra', '8855647899', 'chetanshenai9@gmail.com', '1994-07-28', 0, NULL, 0, NULL),
-(34, 'Carlos', 'González', 'male', 'Barquisimeto', '', 'Maharashtra', '9966447554', 'abc@abc.com', '1997-06-24', 0, NULL, 0, NULL),
-(35, 'Fran', ' Wilson', 'male', 'Priyadarshini ', '', 'Maharashtra', '5844775565', 'fran@abc.com', '1997-01-27', 0, NULL, 0, NULL),
-(36, 'Jean', ' Fresnière', 'female', '43 rue St. Laurent', '', 'Maharashtra', '9975586123', 'chetanshenai9@gmail.com', '2002-01-28', 0, NULL, 0, NULL),
-(37, 'Jose', 'Pavarotti', 'male', '187 Suffolk Ln.', '', 'Maharashtra', '875213654', ' Pavarotti@gmail.com', '1997-02-04', 0, NULL, 0, NULL),
-(38, 'Palle', 'Ibsen', 'female', 'Smagsløget 45', '', 'Maharashtra', '9975245588', 'Palle@gmail.com', '1991-06-17', 0, NULL, 0, '2018-01-14 17:11:42'),
-(39, 'Paula', 'Parente', 'male', 'Rua do Mercado, 12', '', 'Maharashtra', '659984878', 'abc@gmail.com', '1996-02-06', 0, NULL, 0, NULL),
-(40, 'Matti', ' Karttunen', 'female', 'Keskuskatu 45', '', 'Maharashtra', '845555125', 'abc@abc.com', '1984-06-19', 0, NULL, 0, NULL),
-(47, 'Chetan ', 'Doe', 'male', 'afa', NULL, 'Maharashtra', '9934678658', 'chetanshenai9@gmail.com', NULL, 0, '2018-11-17 18:26:16', 0, NULL);
+(13, 'Marilyn Manson'),
+(19, 'Twenty One Pilots'),
+(15, 'Coldplay'),
+(16, 'Shawn Mendes'),
+(17, 'Justin Bieber'),
+(18, 'Maroon 5');
 
 -- --------------------------------------------------------
 
@@ -213,6 +169,54 @@ INSERT INTO `languages` (`id`, `language`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `playlists`
+--
+
+DROP TABLE IF EXISTS `playlists`;
+CREATE TABLE IF NOT EXISTS `playlists` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `owner` varchar(50) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlists`
+--
+
+INSERT INTO `playlists` (`id`, `name`, `owner`, `date`) VALUES
+(8, 'new', 'lavu123', '2020-03-12 00:00:00'),
+(7, 'Lavu', 'leo99', '2020-03-12 00:00:00'),
+(6, 'Leo', 'leo99', '2020-02-14 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playlistsongs`
+--
+
+DROP TABLE IF EXISTS `playlistsongs`;
+CREATE TABLE IF NOT EXISTS `playlistsongs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `songId` int(11) NOT NULL,
+  `playListId` int(11) NOT NULL,
+  `playListOrder` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlistsongs`
+--
+
+INSERT INTO `playlistsongs` (`id`, `songId`, `playListId`, `playListOrder`) VALUES
+(51, 5, 6, 1),
+(52, 42, 7, 1),
+(53, 35, 7, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `songs`
 --
 
@@ -229,20 +233,36 @@ CREATE TABLE IF NOT EXISTS `songs` (
   `albumOrder` int(11) NOT NULL,
   `plays` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `songs`
 --
 
 INSERT INTO `songs` (`id`, `title`, `artist`, `album`, `language`, `genre`, `duration`, `path`, `albumOrder`, `plays`) VALUES
-(3, '24k Magic', 2, 3, 1, 2, '3:46', 'assets\\music\\24K_Magic.mp3', 1, 0),
-(4, 'Congratulations ft. Quavo', 3, 2, 1, 1, '3:47', 'assets\\music\\Congratulations_ft_Quavo.mp3', 1, 0),
-(5, 'I Don\'t Care', 1, 7, 1, 2, '3:39', 'assets\\music\\No_6_06 I Don\'t Care.mp3', 1, 0),
-(6, 'Antisocial', 1, 7, 1, 1, '2:41', 'assets\\music\\No_6_07 Antisocial.mp3', 2, 0),
-(7, 'Feels (feat_ Young Thug & J Hus)', 1, 7, 1, 2, '2:30', 'assets\\music\\No_6_09 Feels (feat_ Young Thug & J Hus).mp3', 3, 0),
-(8, 'I Don\'t Want Your Money (feat. H_E_R_)', 1, 7, 1, 1, '3:24', 'assets\\music\\No_6_12 I Don’t Want Your Money (feat_ H_E_R_).mp3', 4, 0),
-(9, 'BLOW', 1, 7, 1, 3, '3:29', 'assets\\music\\No_6_15 BLOW.mp3', 5, 0);
+(3, '24k Magic', 2, 3, 1, 2, '3:46', '24K_Magic.mp3', 1, 77),
+(4, 'Congratulations ft. Quavo', 3, 2, 1, 1, '3:47', 'Congratulations_ft_Quavo.mp3', 1, 49),
+(5, 'I Don\'t Care', 1, 7, 1, 2, '3:39', 'No_6_06 I Don\'t Care.mp3', 1, 81),
+(6, 'Antisocial', 1, 7, 1, 1, '2:41', 'No_6_07 Antisocial.mp3', 2, 80),
+(7, 'Feels (feat_ Young Thug & J Hus)', 1, 7, 1, 2, '2:30', 'No_6_09 Feels (feat_ Young Thug & J Hus).mp3', 3, 70),
+(31, 'Hello', 9, 8, 1, 1, '4:08', '1203020359.mp3', 2, 0),
+(32, 'Not Afraid', 9, 8, 1, 1, '4:10', '1203020324.mp3', 2, 1),
+(9, 'BLOW', 1, 7, 1, 3, '3:29', 'No_6_15 BLOW.mp3', 5, 70),
+(34, 'Thank U, Next', 11, 10, 1, 1, '3.19', '1203020333.mp3', 1, 0),
+(33, 'Orphans', 15, 18, 1, 1, '3:17', '1203020308.mp3', 1, 3),
+(35, 'Bad Guy', 12, 11, 1, 2, '3:14', '1203020354.mp3', 1, 3),
+(36, 'All the Good Girls Go to Hell', 12, 11, 1, 2, '2:48', '1203020324.mp3', 2, 3),
+(37, 'Wish You Were Gay', 12, 11, 1, 2, '3:41', '1203020320.mp3', 3, 1),
+(38, 'Blinding Lights', 10, 9, 1, 2, '3:21', '1203020359.mp3', 1, 1),
+(39, 'In My Blood', 16, 19, 1, 2, '3:31', '1203020303.mp3', 1, 2),
+(40, 'Nervous', 16, 19, 1, 2, '2:44', '1203020346.mp3', 2, 3),
+(41, 'Sorry', 17, 21, 1, 2, '3:20', '1203030330.mp3', 1, 1),
+(42, 'Love Yourself', 17, 21, 1, 2, '3:52', '1203030305.mp3', 2, 4),
+(43, ' I\'ll Show You', 17, 21, 1, 2, '3:20', '1203030312.mp3', 3, 0),
+(44, 'Girls Like You', 18, 22, 1, 2, '3:34', '1203030312.mp3', 1, 10),
+(45, 'Jumpsuit', 19, 23, 1, 3, '3:58', '1203030303.mp3', 1, 3),
+(46, 'My Blood', 19, 23, 1, 3, '3:49', '1203030344.mp3', 2, 0),
+(47, 'Chlorine', 19, 23, 1, 3, '3:11', '1203030326.mp3', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Status` varchar(10) NOT NULL,
   `profilePic` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -271,7 +291,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `email`, `password`, `signUpDate`, `Status`, `profilePic`) VALUES
 (3, 'batset', 'Leo', 'Prem', 'Leoprem99@gmail.com', '$2y$10$ThIeCe7jiWO7VUkWD2UZp.rT80/l6H9aYanC8ZT6efXA46uxZMT7K', '2019-12-15 00:00:00', 'user', 'assets/images/profile-pic/default.jpg'),
 (4, 'lavu12', 'Lavanya', 'Lavu', 'Josejames33@gmail.com', '$2y$10$wFAySx4z0C54jNH2cren6eEJ8A391qe3KwVq.FFwd0JfwCZJtRt9.', '2019-12-15 00:00:00', 'user', 'assets/images/profile-pic/default.jpg'),
-(7, 'Leo99', 'Leo', 'Prem', 'Leoisleo99@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-02-09 00:00:00', 'user', 'assets/images/profile-pic/default.jpg');
+(7, 'Leo99', 'Leo', 'Prem', 'adssd@adasd.com', '827ccb0eea8a706c4c34a16891f84e7b', '2020-02-09 00:00:00', 'user', 'assets/images/profile-pic/default.jpg'),
+(8, 'lavu123', 'Lavanya', 'Prem', 'Lavu@gmail.com', '8e4eaa4997b91645b0f29a599c43bf3b', '2020-03-12 00:00:00', 'user', 'assets/images/profile-pic/default.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

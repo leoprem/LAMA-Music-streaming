@@ -12,7 +12,7 @@
                <div class="gridViewContainer">
                    <img src="" alt="">
                    <?php 
-                        $albumQuery = mysqli_query($con,"SELECT * FROM album ORDER BY RAND() LIMIT 10");
+                        $albumQuery = mysqli_query($con,"SELECT * FROM album ORDER BY RAND() LIMIT 12");
                         while($row = mysqli_fetch_assoc($albumQuery)):
                             
                             echo "<div class='gridViewItem'>
